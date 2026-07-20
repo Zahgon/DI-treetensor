@@ -23,28 +23,9 @@ __all__ = [
 
 
 def _post_index(func):
-    def _has_non_none(tree):
-        if isinstance(tree, TreeValue):
-            for _, value in tree.items():
-                if _has_non_none(value):
-                    return True
-
-            return False
-        else:
-            return tree is not None
-
-    @wraps(func)
-    def _new_func(self, value, *args, **kwargs):
-        _tree = func(self, value, *args, **kwargs)
-        if not _has_non_none(_tree):
-            raise ValueError(f'Can not find {repr(value)} in all the sizes.')
-        else:
-            return _tree
-
-    return _new_func
+    pass
 
 
-# noinspection PyTypeChecker
 @current_names()
 class Size(Torch, metaclass=clsmeta(torch.Size, allow_dict=True)):
     def __init__(self, data):
@@ -75,52 +56,13 @@ class Size(Torch, metaclass=clsmeta(torch.Size, allow_dict=True)):
     @ireduce(sum)
     @func_treelize(return_type=Object)
     def numel(self: torch.Size) -> Object:
-        """
-        Get the numel sum of the sizes in this tree.
-
-        Example::
-
-            >>> import torch
-            >>> import treetensor.numpy as ttorch
-            >>> ttorch.Size({
-            ...     'a': [1, 2],
-            ...     'b': {'x': [3, 2, 4]},
-            ... }).numel()
-            26
-        """
-        return self.numel()
+        pass
 
     @doc_from_base()
     @_post_index
     @func_treelize(return_type=Object)
     def index(self: torch.Size, value, *args, **kwargs) -> Object:
-        """
-
-        Example::
-
-            >>> import torch
-            >>> import treetensor.numpy as ttorch
-            >>> ttorch.Size({
-            ...     'a': [1, 2],
-            ...     'b': {'x': [3, 2, 4]},
-            ...     'c': [3, 5],
-            ... }).index(2)
-            <Object 0x7fb412780e80>
-            ├── a --> 1
-            ├── b --> <Object 0x7fb412780eb8>
-            │   └── x --> 1
-            └── c --> None
-
-        .. note::
-
-            This method's behaviour is different from the :func:`torch.Size.index`.
-            No :class:`ValueError` will be raised unless the value can not be found
-            in any of the sizes, instead there will be nones returned in the tree.
-        """
-        try:
-            return self.index(value, *args, **kwargs)
-        except ValueError:
-            return None
+        pass
 
     @doc_from_base()
     @ireduce(sum)

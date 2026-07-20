@@ -1,8 +1,3 @@
-"""
-Class decorators.
-
-Mainly used for tagging the members of a class, will be used when auto generating the documentation.
-"""
 import types
 from functools import reduce
 from operator import __or__
@@ -25,28 +20,17 @@ def _set_names(clazz: type, names: Iterable[str]):
 
 
 def tag_names(names: Iterable[str], keep: bool = True):
-    def _decorator(cls: _CLS_TYPE) -> _CLS_TYPE:
-        _old_names = _get_names(cls) if keep else set()
-        _set_names(cls, set(names) | _old_names)
-
-        return cls
-
-    return _decorator
+    pass
 
 
 def inherit_names(*clazzes: type, keep: bool = True):
-    def _decorator(cls: _CLS_TYPE) -> _CLS_TYPE:
-        _old_names = _get_names(cls) if keep else set()
-        _set_names(cls, reduce(__or__, [_old_names, *map(_get_names, clazzes)]))
-        return cls
-
-    return _decorator
+    pass
 
 
 class _TempClazz:
     @property
     def prop(self):
-        return None
+        pass
 
 
 PropertyType = type(_TempClazz.prop)
@@ -59,7 +43,6 @@ def _is_property(clazz, name):
     )
 
 
-# noinspection PyTypeChecker
 def _is_func(clazz, name):
     func = getattr(clazz, name)
     return isinstance(func, types.FunctionType) and (
@@ -76,15 +59,6 @@ def _is_classmethod(clazz, name):
 
 def current_names(keep: bool = True):
     def _decorator(cls: _CLS_TYPE) -> _CLS_TYPE:
-        members = set()
-        for name in dir(cls):
-            item = getattr(cls, name)
-            if ((_is_func(cls, name) or _is_classmethod(cls, name)) and getattr(item, '__name__', None) == name) or \
-                    (_is_property(cls, name)):
-                members.add(name)
-
-        _old_names = _get_names(cls) if keep else set()
-        _set_names(cls, _old_names | set(members))
-        return cls
+        pass
 
     return _decorator

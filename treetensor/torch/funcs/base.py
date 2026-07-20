@@ -19,12 +19,4 @@ _is_torch_2 = vpip('torch') >= '2'
 
 
 def wrap_for_treelize(*args, **kwargs):
-    def _decorator(func):
-        @wraps(func)
-        def _new_func(*args_, **kwargs_):
-            retval = func(*args_, **kwargs_)
-            return func_treelize(*args, **kwargs)(retval)
-
-        return _new_func
-
-    return _decorator
+    pass

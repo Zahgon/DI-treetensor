@@ -29,26 +29,7 @@ def _is_removed(obj) -> bool:
 
 
 def class_autoremove(cls: type) -> type:
-    """
-    Overview:
-        Remove the items which are marked as removed in the given ``cls``.
-
-    Arguments:
-        - cls (:obj:`type`): Given class.
-
-    Returns:
-        - marked (:obj:`type`): Marked class.
-
-    Examples::
-
-        >>> @class_autoremove
-        >>> class MyClass:
-        >>>     pass
-    """
-    for _name in dir(cls):
-        if _is_removed(getattr(cls, _name)):
-            delattr(cls, _name)
-    return cls
+    pass
 
 
 def module_autoremove(module: ModuleType):
@@ -81,7 +62,6 @@ def module_autoremove(module: ModuleType):
     else:
         names = dir(module)
 
-        # noinspection PyUnusedLocal
         def names_postprocess(new_names):
             pass
 

@@ -38,7 +38,7 @@ def get_tree_proxy(base, cls_mapper=None):
                 @method_treelize(return_type=TreeValue, rise=True)
                 @wraps(_origin_func, assigned=('__name__',), updated=())
                 def _new_func(*args, **kwargs):
-                    return _origin_func(*args, **kwargs)
+                    pass
 
                 _new_func.__qualname__ = f'{self.__cls.__name__}.{name}'
                 _new_func.__module__ = outer_module

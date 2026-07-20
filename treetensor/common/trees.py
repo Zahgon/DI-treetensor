@@ -15,10 +15,6 @@ __all__ = [
 
 
 class BaseTreeStruct(general_tree_value()):
-    """
-    Overview:
-        Base structure of all the trees in ``treetensor``.
-    """
     pass
 
 
@@ -43,14 +39,7 @@ def clsmeta(func, allow_dict: bool = False) -> Type[type]:
         pass
 
     def _mapping_func(_, x):
-        if isinstance(x, TreeValue):
-            return x
-        elif isinstance(x, TreeStorage):
-            return TreeValue(x)
-        elif allow_dict and isinstance(x, dict):
-            return TreeValue(x)
-        else:
-            return x
+        pass
 
     func_treelize = post_process(post_process(args_mapping(_mapping_func)))(
         replaceable_partial(original_func_treelize, return_type=_TempTreeValue)
@@ -75,37 +64,8 @@ def clsmeta(func, allow_dict: bool = False) -> Type[type]:
 
 
 def _auto_tree_func(t, cls):
-    from .object import Object
-    t = typetrans(t, return_type=Object)
-    for key, value in cls:
-        if isinstance(key, type):
-            predict = lambda x: isinstance(x, key)
-        elif callable(key):
-            predict = lambda x: key(x)
-        else:
-            raise TypeError(f'Unknown type of prediction - {repr(key)}.')
-
-        if t.map(predict).all():
-            return typetrans(t, return_type=value)
-    return t
+    pass
 
 
-# noinspection PyArgumentList
 def auto_tree(v, cls):
-    if isinstance(cls, type) and issubclass(cls, TreeValue):
-        cls = partial(typetrans, return_type=cls)
-    elif isinstance(cls, (list, tuple)):
-        cls = partial(_auto_tree_func, cls=cls)
-    elif callable(cls):
-        pass
-    else:
-        raise TypeError(f'Unknown type of cls - {repr(cls)}.')
-
-    if isinstance(v, TreeValue):
-        return cls(v)
-    elif isinstance(v, (tuple, list, set)):
-        return type(v)((auto_tree(item, cls) for item in v))
-    elif isinstance(v, dict):
-        return type(v)({key: auto_tree(value, cls) for key, value in v.items()})
-    else:
-        return v
+    pass

@@ -29,26 +29,26 @@ get_func_from_numpy = module_func_loader(np, ndarray,
 @ireduce(builtins.all)
 @func_treelize(return_type=Object)
 def all(a, *args, **kwargs):
-    return np.all(a, *args, **kwargs)
+    pass
 
 
 @doc_from(np.any)
 @ireduce(builtins.any)
 @func_treelize()
 def any(a, *args, **kwargs):
-    return np.any(a, *args, **kwargs)
+    pass
 
 
 @doc_from(np.equal)
 @func_treelize()
 def equal(x1, x2, *args, **kwargs):
-    return np.equal(x1, x2, *args, **kwargs)
+    pass
 
 
 @doc_from(np.array_equal)
 @func_treelize()
 def array_equal(a1, a2, *args, **kwargs):
-    return np.array_equal(a1, a2, *args, **kwargs)
+    pass
 
 
 @doc_from(np.array)
@@ -78,28 +78,28 @@ def array(p_object, *args, **kwargs):
 @doc_from(np.stack)
 @func_treelize(subside=True)
 def stack(arrays, *args, **kwargs):
-    return np.stack(arrays, *args, **kwargs)
+    pass
 
 
 @doc_from(np.concatenate)
 @func_treelize(subside=True)
 def concatenate(arrays, *args, **kwargs):
-    return np.concatenate(arrays, *args, **kwargs)
+    pass
 
 
 @doc_from(np.split)
 @func_treelize(rise=True)
 def split(ary, *args, **kwargs):
-    return np.split(ary, *args, **kwargs)
+    pass
 
 
 @doc_from(np.zeros)
 @func_treelize()
 def zeros(shape, *args, **kwargs):
-    return np.zeros(shape, *args, **kwargs)
+    pass
 
 
 @doc_from(np.ones)
 @func_treelize()
 def ones(shape, *args, **kwargs):
-    return np.ones(shape, *args, **kwargs)
+    pass

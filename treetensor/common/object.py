@@ -11,14 +11,10 @@ __all__ = [
 
 
 def _object(obj):
-    return obj
+    pass
 
 
 class Object(BaseTreeStruct, metaclass=clsmeta(_object, allow_dict=True)):
-    """
-    Overview:
-        Generic object tree class, used in :py:mod:`treetensor.numpy` and :py:mod:`treetensor.torch`.
-    """
 
     def __init__(self, data):
         """
@@ -42,37 +38,9 @@ class Object(BaseTreeStruct, metaclass=clsmeta(_object, allow_dict=True)):
     @ireduce(builtins.all, piter=list)
     @method_treelize()
     def all(self):
-        """
-        The values in this tree is all true or not.
-
-        Examples::
-
-            >>> from treetensor.common import Object
-            >>> Object({'a': False, 'b': {'x': False}}).all()
-            False
-            >>> Object({'a': True, 'b': {'x': False}}).all()
-            False
-            >>> Object({'a': True, 'b': {'x': True}}).all()
-            True
-
-        """
-        return not not self
+        pass
 
     @ireduce(builtins.any, piter=list)
     @method_treelize()
     def any(self):
-        """
-        The values in this tree is not all False or yes.
-
-        Examples::
-
-            >>> from treetensor.common import Object
-            >>> Object({'a': False, 'b': {'x': False}}).any()
-            False
-            >>> Object({'a': True, 'b': {'x': False}}).any()
-            True
-            >>> Object({'a': True, 'b': {'x': True}}).any()
-            True
-
-        """
-        return not not self
+        pass

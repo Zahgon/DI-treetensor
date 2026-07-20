@@ -17,15 +17,13 @@ _ArrayProxy, _InstanceArrayProxy = get_tree_proxy(numpy.ndarray)
 
 @lru_cache()
 def _get_tensor_class(args0):
-    from ..torch import Tensor
-    return Tensor(args0)
+    pass
 
 
 class _BaseArrayMeta(clsmeta(numpy.asarray, allow_dict=True)):
     pass
 
 
-# noinspection PyMethodParameters
 class _ArrayMeta(_BaseArrayMeta):
     def __init__(cls, *args, **kwargs):
         _BaseArrayMeta.__init__(cls, *args, **kwargs)
@@ -33,9 +31,7 @@ class _ArrayMeta(_BaseArrayMeta):
 
     @property
     def np(cls):
-        if not cls.__proxy:
-            cls.__proxy = _ArrayProxy(cls)
-        return cls.__proxy
+        pass
 
     def __getattr__(cls, name):
         try:
@@ -44,62 +40,50 @@ class _ArrayMeta(_BaseArrayMeta):
             raise AttributeError(f"type object {repr(cls.__name__)} has no attribute {repr(name)}")
 
 
-# noinspection PyPep8Naming
 @current_names()
 class ndarray(TreeNumpy, metaclass=_ArrayMeta):
-    """
-    Overview:
-        Real numpy tree.
-    """
 
     @method_treelize(return_type=Object)
     def __get_attr(self, key):
-        return getattr(self, key)
+        pass
 
     def _attr_extern(self, name):
-        try:
-            return getattr(self.np, name)
-        except AttributeError:
-            tree = self.__get_attr(name)
-            if tree.map(lambda x: isinstance(x, numpy.ndarray)).all():
-                return tree.type(ndarray)
-            else:
-                return tree
+        pass
 
     @property
     def np(self):
-        return _InstanceArrayProxy(self.__class__.np, self)
+        pass
 
     @method_treelize(return_type=Object)
     def tolist(self: numpy.ndarray):
-        return self.tolist()
+        pass
 
     @property
     @ireduce(sum)
     @method_treelize(return_type=Object)
     def size(self: numpy.ndarray) -> int:
-        return self.size
+        pass
 
     @property
     @ireduce(sum)
     @method_treelize(return_type=Object)
     def nbytes(self: numpy.ndarray) -> int:
-        return self.nbytes
+        pass
 
     @ireduce(sum)
     @method_treelize(return_type=Object)
     def sum(self: numpy.ndarray, *args, **kwargs):
-        return self.sum(*args, **kwargs)
+        pass
 
     @ireduce(all)
     @method_treelize(return_type=Object)
     def all(self: numpy.ndarray, *args, **kwargs):
-        return self.all(*args, **kwargs)
+        pass
 
     @ireduce(any)
     @method_treelize(return_type=Object)
     def any(self: numpy.ndarray, *args, **kwargs):
-        return self.any(*args, **kwargs)
+        pass
 
     @method_treelize(return_type=_get_tensor_class)
     def tensor(self: numpy.ndarray, *args, **kwargs):

@@ -13,20 +13,17 @@ __all__ = [
 ]
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.all)
 @func_treelize(return_type=Object)
 def _all_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _all_nr(input, *args, **kwargs):
-    return torch.all(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_all_r, _all_nr)
 def all(input, *args, reduce=None, **kwargs):
@@ -62,20 +59,17 @@ def all(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.any)
 @func_treelize(return_type=Object)
 def _any_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _any_nr(input, *args, **kwargs):
-    return torch.any(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_any_r, _any_nr)
 def any(input, *args, reduce=None, **kwargs):
@@ -110,21 +104,18 @@ def any(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.min)
 @func_treelize(return_type=Object)
 def _min_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @post_process(auto_tensor)
 @func_treelize(return_type=TreeValue, rise=True)
 def _min_nr(input, *args, **kwargs):
-    return torch.min(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_min_r, _min_nr)
 def min(input, *args, reduce=None, **kwargs):
@@ -172,21 +163,18 @@ def min(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.max)
 @func_treelize(return_type=Object)
 def _max_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @post_process(auto_tensor)
 @func_treelize(return_type=TreeValue, rise=True)
 def _max_nr(input, *args, **kwargs):
-    return torch.max(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_max_r, _max_nr)
 def max(input, *args, reduce=None, **kwargs):
@@ -234,20 +222,17 @@ def max(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.sum)
 @func_treelize(return_type=Object)
 def _sum_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _sum_nr(input, *args, **kwargs):
-    return torch.sum(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_sum_r, _sum_nr)
 def sum(input, *args, reduce=None, **kwargs):
@@ -288,20 +273,17 @@ def sum(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.mean)
 @func_treelize(return_type=Object)
 def _mean_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _mean_nr(input, *args, **kwargs):
-    return torch.mean(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_mean_r, _mean_nr)
 def mean(input, *args, reduce=None, **kwargs):
@@ -348,20 +330,17 @@ def mean(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @post_reduce(torch.std)
 @func_treelize(return_type=Object)
 def _std_r(input, *args, **kwargs):
-    return input
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _std_nr(input, *args, **kwargs):
-    return torch.std(input, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_std_r, _std_nr)
 def std(input, *args, reduce=None, **kwargs):
@@ -408,30 +387,25 @@ def std(input, *args, reduce=None, **kwargs):
     pass  # pragma: no cover
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @rmreduce()
 @func_treelize(return_type=Object)
 def _masked_select_r(input, mask, *args, **kwargs):
-    return torch.masked_select(input, mask, *args, **kwargs)
+    pass
 
 
-# noinspection PyShadowingBuiltins
 @func_treelize()
 def _masked_select_nr(input, mask, *args, **kwargs):
-    return torch.masked_select(input, mask, *args, **kwargs)
+    pass
 
 
-# noinspection PyUnusedLocal
 def _ms_determine(mask, *args, out=None, **kwargs):
-    return False if args or kwargs else None
+    pass
 
 
-# noinspection PyUnusedLocal
 def _ms_condition(mask, *args, out=None, **kwargs):
-    return not args and not kwargs
+    pass
 
 
-# noinspection PyShadowingBuiltins,PyUnusedLocal
 @doc_from_base()
 @auto_reduce(_masked_select_r, _masked_select_nr,
              _ms_determine, _ms_condition)
